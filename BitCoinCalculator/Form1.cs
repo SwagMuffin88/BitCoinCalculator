@@ -27,9 +27,18 @@ namespace BitCoinCalculator
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (currencySelector.SelectedItem.ToString() == "EUR")
+            {
+                resultLabel.Visible = true;
+                tulemusLabel.Visible = true;
+                BitcoinRates newBitcoinRate = GetRates();
 
+                float result = float.Parse(bitcoinInput.Text) * (float)newBitcoinRate.Bpi.EUR.rate_float;
+
+                resultLabel.Text = $"{result} Bitcoini {newBitcoinRate.Bpi.EUR.code}";
+            }
         }
-        public static void GetRates(string currency)
+        public static BitcoinRates GetRates()
         {
             string url = "https://api.coindesk.com/v1/bpi/currentprice/currentprice.json";
 
@@ -39,10 +48,14 @@ namespace BitCoinCalculator
             var webResponse = request.GetResponse();
             var webStream = webResponse.GetResponseStream();
 
+            BitcoinRates bitcoin;
+
             using(var responseReader = new StreamReader(webStream)) 
             {
                 var rates = responseReader.ReadToEnd();
+                bitcoin = JsonConvert.DeserializeObject<BitcoinRates>(rates);
             }
+            return bitcoin;
         }
 
     }
