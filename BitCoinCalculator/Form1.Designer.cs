@@ -81,11 +81,11 @@
             // 
             // resultLabel
             // 
-            this.resultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.resultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.resultLabel.ForeColor = System.Drawing.Color.YellowGreen;
-            this.resultLabel.Location = new System.Drawing.Point(579, 118);
+            this.resultLabel.Location = new System.Drawing.Point(553, 119);
             this.resultLabel.Name = "resultLabel";
-            this.resultLabel.Size = new System.Drawing.Size(100, 62);
+            this.resultLabel.Size = new System.Drawing.Size(200, 38);
             this.resultLabel.TabIndex = 4;
             this.resultLabel.Text = "N/A";
             // 
@@ -94,7 +94,7 @@
             this.tulemusLabel.AutoSize = true;
             this.tulemusLabel.BackColor = System.Drawing.Color.Transparent;
             this.tulemusLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.tulemusLabel.Location = new System.Drawing.Point(576, 102);
+            this.tulemusLabel.Location = new System.Drawing.Point(550, 103);
             this.tulemusLabel.Name = "tulemusLabel";
             this.tulemusLabel.Size = new System.Drawing.Size(50, 13);
             this.tulemusLabel.TabIndex = 5;

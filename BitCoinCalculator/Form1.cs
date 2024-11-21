@@ -40,7 +40,7 @@ namespace BitCoinCalculator
         }
         public static BitcoinRates GetRates()
         {
-            string url = "https://api.coindesk.com/v1/bpi/currentprice/currentprice.json";
+            string url = "https://api.coindesk.com/v1/bpi/currentprice.json";
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
