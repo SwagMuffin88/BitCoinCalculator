@@ -27,16 +27,48 @@ namespace BitCoinCalculator
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (currencySelector.SelectedItem.ToString() == "EUR")
+            convertResult.Visible = true;
+            convertResultLabel.Visible = true;
+            BitcoinRates newBitcoinRate = GetRates();
+
+            float result = 0;
+
+            switch (currencySelector.SelectedItem.ToString())
             {
-                resultLabel.Visible = true;
-                tulemusLabel.Visible = true;
-                BitcoinRates newBitcoinRate = GetRates();
-
-                float result = float.Parse(bitcoinInput.Text) * (float)newBitcoinRate.Bpi.EUR.rate_float;
-
-                resultLabel.Text = $"{result} Bitcoini {newBitcoinRate.Bpi.EUR.code}";
+                case "EUR" :
+                    result = float.Parse(bitcoinInput.Text) * (float)newBitcoinRate.Bpi.EUR.rate_float;
+                    convertResult.Text = $"{result} {newBitcoinRate.Bpi.EUR.code}";
+                    break;
+                
+                case "USD":
+                    result = float.Parse(bitcoinInput.Text) * (float)newBitcoinRate.Bpi.USD.rate_float;
+                    convertResult.Text = $"{result} {newBitcoinRate.Bpi.USD.code}";
+                    break;
+                
+                case "GBP":
+                    result = float.Parse(bitcoinInput.Text) * (float)newBitcoinRate.Bpi.GBP.rate_float;
+                    convertResult.Text = $"{result} {newBitcoinRate.Bpi.GBP.code}";
+                    break;
+                
+                case "EEK":
+                    result = float.Parse(bitcoinInput.Text) * (float)newBitcoinRate.Bpi.EUR.rate_float * 15.6466f;
+                    convertResult.Text = $"{result} EEK";
+                    break;
+                    
             }
+            
+            // if (currencySelector.SelectedItem.ToString() == "EUR")
+            // {
+            //     result = float.Parse(bitcoinInput.Text) * (float)newBitcoinRate.Bpi.EUR.rate_float;
+            //
+            //     convertResult.Text = $"{result} Bitcoini {newBitcoinRate.Bpi.EUR.code}";
+            // }
+            // else if (currencySelector.SelectedItem.ToString() == "USD")
+            // {
+            //     result = float.Parse(bitcoinInput.Text) * (float)newBitcoinRate.Bpi.USD.rate_float;
+            //
+            //     convertResult.Text = $"{result} Bitcoini {newBitcoinRate.Bpi.USD.code}";
+            // }
         }
         public static BitcoinRates GetRates()
         {

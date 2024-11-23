@@ -33,17 +33,14 @@
             this.bitcoinInput = new System.Windows.Forms.TextBox();
             this.bitcoinLabel = new System.Windows.Forms.Label();
             this.conversionButton = new System.Windows.Forms.Button();
-            this.resultLabel = new System.Windows.Forms.TextBox();
-            this.tulemusLabel = new System.Windows.Forms.Label();
+            this.convertResult = new System.Windows.Forms.TextBox();
+            this.convertResultLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // currencySelector
             // 
             this.currencySelector.FormattingEnabled = true;
-            this.currencySelector.Items.AddRange(new object[] {
-            "EUR",
-            "USD",
-            "EEK"});
+            this.currencySelector.Items.AddRange(new object[] { "EUR", "USD", "GBP", "EEK" });
             this.currencySelector.Location = new System.Drawing.Point(362, 118);
             this.currencySelector.Name = "currencySelector";
             this.currencySelector.Size = new System.Drawing.Size(121, 21);
@@ -79,26 +76,26 @@
             this.conversionButton.UseVisualStyleBackColor = true;
             this.conversionButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // resultLabel
+            // convertResult
             // 
-            this.resultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.resultLabel.ForeColor = System.Drawing.Color.YellowGreen;
-            this.resultLabel.Location = new System.Drawing.Point(553, 119);
-            this.resultLabel.Name = "resultLabel";
-            this.resultLabel.Size = new System.Drawing.Size(200, 38);
-            this.resultLabel.TabIndex = 4;
-            this.resultLabel.Text = "N/A";
+            this.convertResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.convertResult.ForeColor = System.Drawing.Color.YellowGreen;
+            this.convertResult.Location = new System.Drawing.Point(553, 119);
+            this.convertResult.Name = "convertResult";
+            this.convertResult.Size = new System.Drawing.Size(200, 38);
+            this.convertResult.TabIndex = 4;
+            this.convertResult.Text = "N/A";
             // 
-            // tulemusLabel
+            // convertResultLabel
             // 
-            this.tulemusLabel.AutoSize = true;
-            this.tulemusLabel.BackColor = System.Drawing.Color.Transparent;
-            this.tulemusLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.tulemusLabel.Location = new System.Drawing.Point(550, 103);
-            this.tulemusLabel.Name = "tulemusLabel";
-            this.tulemusLabel.Size = new System.Drawing.Size(50, 13);
-            this.tulemusLabel.TabIndex = 5;
-            this.tulemusLabel.Text = "Tulemus:";
+            this.convertResultLabel.AutoSize = true;
+            this.convertResultLabel.BackColor = System.Drawing.Color.Transparent;
+            this.convertResultLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.convertResultLabel.Location = new System.Drawing.Point(550, 103);
+            this.convertResultLabel.Name = "convertResultLabel";
+            this.convertResultLabel.Size = new System.Drawing.Size(50, 13);
+            this.convertResultLabel.TabIndex = 5;
+            this.convertResultLabel.Text = "Tulemus:";
             // 
             // Form1
             // 
@@ -107,8 +104,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(765, 441);
-            this.Controls.Add(this.tulemusLabel);
-            this.Controls.Add(this.resultLabel);
+            this.Controls.Add(this.convertResultLabel);
+            this.Controls.Add(this.convertResult);
             this.Controls.Add(this.bitcoinLabel);
             this.Controls.Add(this.bitcoinInput);
             this.Controls.Add(this.conversionButton);
@@ -117,7 +114,6 @@
             this.Text = "BitCoinCalculator";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -126,8 +122,8 @@
         private System.Windows.Forms.TextBox bitcoinInput;
         private System.Windows.Forms.Label bitcoinLabel;
         private System.Windows.Forms.Button conversionButton;
-        private System.Windows.Forms.TextBox resultLabel;
-        private System.Windows.Forms.Label tulemusLabel;
+        private System.Windows.Forms.TextBox convertResult;
+        private System.Windows.Forms.Label convertResultLabel;
     }
 }
 
