@@ -33,7 +33,7 @@ namespace BitCoinCalculator
 
             float result = 0;
 
-            switch (currencySelector.SelectedItem.ToString())
+            switch (inputTextBox.Text.ToUpper())
             {
                 case "EUR" :
                     result = float.Parse(bitcoinInput.Text) * (float)newBitcoinRate.Bpi.EUR.rate_float;
@@ -54,6 +54,16 @@ namespace BitCoinCalculator
                     result = float.Parse(bitcoinInput.Text) * (float)newBitcoinRate.Bpi.EUR.rate_float * 15.6466f;
                     convertResult.Text = $"{result} EEK";
                     break;
+
+                case "JPY":
+                    BitcoinRates newJPYBitcoinRate = GetRatesForJPY();
+                    result = float.Parse(bitcoinInput.Text) * (float)newJPYBitcoinRate.Bpi.JPY.rate_float;
+                    convertResult.Text = $"{(decimal)result} JPY";
+                    break;
+
+                default:
+                    convertResult.Text = "Invalid currency input";
+                    break;
                     
             }
             
@@ -69,6 +79,27 @@ namespace BitCoinCalculator
             //
             //     convertResult.Text = $"{result} Bitcoini {newBitcoinRate.Bpi.USD.code}";
             // }
+        }
+
+        public static BitcoinRates GetRatesForJPY()
+        {
+            string url = "https://api.coindesk.com/v1/bpi/currentprice/jpy.json";
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+
+            var webResponse = request.GetResponse();
+            var webStream = webResponse.GetResponseStream();
+
+            BitcoinRates bitcoin;
+
+            using (var responseReader = new StreamReader(webStream))
+            {
+                var rates = responseReader.ReadToEnd();
+                bitcoin = JsonConvert.DeserializeObject<BitcoinRates>(rates);
+            }
+            return bitcoin;
+
         }
         public static BitcoinRates GetRates()
         {
@@ -90,5 +121,14 @@ namespace BitCoinCalculator
             return bitcoin;
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

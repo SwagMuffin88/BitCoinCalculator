@@ -16,6 +16,8 @@ namespace BitCoinCalculator
         public USD USD { get; set; }
         public GBP GBP { get; set; }
         public EUR EUR { get; set; }
+
+        public JPY JPY { get; set; }
         
     }
 
@@ -56,6 +58,14 @@ namespace BitCoinCalculator
     {
         public string code { get; set; }
         public string symbol { get; set; }
+        public string rate { get; set; }
+        public string description { get; set; }
+        public double rate_float { get; set; }
+    }
+
+    public class JPY
+    {
+        public string code { get; set; }
         public string rate { get; set; }
         public string description { get; set; }
         public double rate_float { get; set; }

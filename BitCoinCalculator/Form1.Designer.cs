@@ -29,23 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.currencySelector = new System.Windows.Forms.ComboBox();
             this.bitcoinInput = new System.Windows.Forms.TextBox();
             this.bitcoinLabel = new System.Windows.Forms.Label();
             this.conversionButton = new System.Windows.Forms.Button();
             this.convertResult = new System.Windows.Forms.TextBox();
             this.convertResultLabel = new System.Windows.Forms.Label();
+            this.inputTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // currencySelector
-            // 
-            this.currencySelector.FormattingEnabled = true;
-            this.currencySelector.Items.AddRange(new object[] { "EUR", "USD", "GBP", "EEK" });
-            this.currencySelector.Location = new System.Drawing.Point(362, 118);
-            this.currencySelector.Name = "currencySelector";
-            this.currencySelector.Size = new System.Drawing.Size(121, 21);
-            this.currencySelector.TabIndex = 0;
-            this.currencySelector.Text = "Vali sihtvaluuta:";
             // 
             // bitcoinInput
             // 
@@ -97,6 +88,25 @@
             this.convertResultLabel.TabIndex = 5;
             this.convertResultLabel.Text = "Tulemus:";
             // 
+            // inputTextBox
+            // 
+            this.inputTextBox.Location = new System.Drawing.Point(362, 132);
+            this.inputTextBox.Name = "inputTextBox";
+            this.inputTextBox.Size = new System.Drawing.Size(100, 20);
+            this.inputTextBox.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label1.Location = new System.Drawing.Point(359, 116);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(160, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Sisesta soovitud valuuta lühend:";
+            this.label1.Click += new System.EventHandler(this.label1_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -104,26 +114,29 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(765, 441);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.inputTextBox);
             this.Controls.Add(this.convertResultLabel);
             this.Controls.Add(this.convertResult);
             this.Controls.Add(this.bitcoinLabel);
             this.Controls.Add(this.bitcoinInput);
             this.Controls.Add(this.conversionButton);
-            this.Controls.Add(this.currencySelector);
             this.Name = "Form1";
             this.Text = "BitCoinCalculator";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox currencySelector;
         private System.Windows.Forms.TextBox bitcoinInput;
         private System.Windows.Forms.Label bitcoinLabel;
         private System.Windows.Forms.Button conversionButton;
         private System.Windows.Forms.TextBox convertResult;
         private System.Windows.Forms.Label convertResultLabel;
+        private System.Windows.Forms.TextBox inputTextBox;
+        private System.Windows.Forms.Label label1;
     }
 }
 
