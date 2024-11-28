@@ -30,19 +30,14 @@ namespace BitCoinCalculator
             convertResult.Visible = true;
             convertResultLabel.Visible = true;
             BitcoinRates newBitcoinRate = GetRates();
-
-            float result = 0;
+            
+            float result;
 
             // kui kasutaja sisestab midagi muud peale numbrite
-            if(!float.TryParse(bitcoinInput.Text)) // kontrolli IDE-s
+            if(!float.TryParse(bitcoinInput.Text, out _)) 
             {
-                lblError.Text = "You must enter a number.";
+                MessageBox.Show("Please enter a numeric value for Bitcoin input.");
             } 
-            // kui kasutaja jätab valuuta sisestamata
-            else if (inputTextBox.Text == null)
-            {
-                 lblError.Text = "You must enter a currency.";
-            }
             else 
             {
                 switch (inputTextBox.Text.ToUpper())
