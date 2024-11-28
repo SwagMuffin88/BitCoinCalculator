@@ -33,38 +33,50 @@ namespace BitCoinCalculator
 
             float result = 0;
 
-            switch (inputTextBox.Text.ToUpper())
+            // kui kasutaja sisestab midagi muud peale numbrite
+            if(!float.TryParse(bitcoinInput.Text)) // kontrolli IDE-s
             {
-                case "EUR" :
-                    result = float.Parse(bitcoinInput.Text) * (float)newBitcoinRate.Bpi.EUR.rate_float;
-                    convertResult.Text = $"{result} {newBitcoinRate.Bpi.EUR.code}";
-                    break;
-                
-                case "USD":
-                    result = float.Parse(bitcoinInput.Text) * (float)newBitcoinRate.Bpi.USD.rate_float;
-                    convertResult.Text = $"{result} {newBitcoinRate.Bpi.USD.code}";
-                    break;
-                
-                case "GBP":
-                    result = float.Parse(bitcoinInput.Text) * (float)newBitcoinRate.Bpi.GBP.rate_float;
-                    convertResult.Text = $"{result} {newBitcoinRate.Bpi.GBP.code}";
-                    break;
-                
-                case "EEK":
-                    result = float.Parse(bitcoinInput.Text) * (float)newBitcoinRate.Bpi.EUR.rate_float * 15.6466f;
-                    convertResult.Text = $"{result} EEK";
-                    break;
-
-                case "JPY":
-                    BitcoinRates newJPYBitcoinRate = GetRatesForJPY();
-                    result = float.Parse(bitcoinInput.Text) * (float)newJPYBitcoinRate.Bpi.JPY.rate_float;
-                    convertResult.Text = $"{(decimal)result} JPY";
-                    break;
-
-                default:
-                    convertResult.Text = "Invalid currency input";
-                    break;
+                lblError.Text = "You must enter a number.";
+            } 
+            // kui kasutaja jätab valuuta sisestamata
+            else if (inputTextBox.Text == null)
+            {
+                 lblError.Text = "You must enter a currency.";
+            }
+            else 
+            {
+                switch (inputTextBox.Text.ToUpper())
+                {
+                    case "EUR" :
+                        result = float.Parse(bitcoinInput.Text) * (float)newBitcoinRate.Bpi.EUR.rate_float;
+                        convertResult.Text = $"{result} {newBitcoinRate.Bpi.EUR.code}";
+                        break;
                     
+                    case "USD":
+                        result = float.Parse(bitcoinInput.Text) * (float)newBitcoinRate.Bpi.USD.rate_float;
+                        convertResult.Text = $"{result} {newBitcoinRate.Bpi.USD.code}";
+                        break;
+                    
+                    case "GBP":
+                        result = float.Parse(bitcoinInput.Text) * (float)newBitcoinRate.Bpi.GBP.rate_float;
+                        convertResult.Text = $"{result} {newBitcoinRate.Bpi.GBP.code}";
+                        break;
+                    
+                    case "EEK":
+                        result = float.Parse(bitcoinInput.Text) * (float)newBitcoinRate.Bpi.EUR.rate_float * 15.6466f;
+                        convertResult.Text = $"{result} EEK";
+                        break;
+
+                    case "JPY":
+                        BitcoinRates newJPYBitcoinRate = GetRatesForJPY();
+                        result = float.Parse(bitcoinInput.Text) * (float)newJPYBitcoinRate.Bpi.JPY.rate_float;
+                        convertResult.Text = $"{(decimal)result} JPY";
+                        break;
+    
+                    default:
+                        convertResult.Text = "Invalid currency input";
+                        break;
+                }      
             }
             
             // if (currencySelector.SelectedItem.ToString() == "EUR")
